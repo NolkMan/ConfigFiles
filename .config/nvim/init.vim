@@ -1,3 +1,13 @@
+let g:gruvbox_contrast_dark = "medium"
+
+let g:ycm_key_list_select_completion = ['<TAB>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>']
+let g:ycm_key_list_stop_completion = ['<C-c>', '<UP>', '<DOWN>']
+
+let NERDTreeRespectWildIgnore=1
+
+let g:clang_format#detect_style_file=1
+
 "call plug#begin('~/.config/nvim/autoload/plug.vim')
 call plug#begin()
 
@@ -41,11 +51,11 @@ command! W w
 
 set backspace=indent,eol,start
 
-set background=dark
+"set background=dark
 colorscheme gruvbox
 set guifont=Fira\ Mono\ 8
 
 
 set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
