@@ -168,3 +168,6 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 client.focused          #2e3436 #2e3436 #ffffff #2e3436   #2e3436
 exec_always --no-startup-id feh --bg-scale /usr/share/backgrounds/macaw-poly2.jpg
+
+# screenshots
+bindsym --release $mod+p exec "import $HOME/screenshots/$(date '+%y-%m-%d-%T').png"
