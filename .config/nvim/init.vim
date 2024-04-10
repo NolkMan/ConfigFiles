@@ -40,7 +40,6 @@ set laststatus=2
 set splitright
 set splitbelow
 
-
 set hlsearch
 set noerrorbells
 set belloff=all
@@ -53,6 +52,12 @@ set backspace=indent,eol,start
 
 set statusline+=%#warningmsg#
 set statusline+=%*
+
+set mouse=
+set guicursor=
+set whichwrap=s,b
+
+set list listchars=tab:  ,trail:_,nbsp:+
 
 if has('termguicolors')
   set termguicolors
