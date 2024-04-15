@@ -57,7 +57,7 @@ set mouse=
 set guicursor=
 set whichwrap=s,b
 
-set list listchars=tab:  ,trail:_,nbsp:+
+set list listchars=tab:\ \ ,trail:_,nbsp:+
 
 if has('termguicolors')
   set termguicolors
@@ -81,7 +81,7 @@ set foldexpr=nvim_treesitter#foldexpr()
 lua << EOF
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "cpp", "make", "javascript", "json", "python", "lua", "vim", "vimdoc", "latex"},
+  ensure_installed = { "c", "cpp", "make", "javascript", "json", "python", "lua", "vim", "vimdoc"},
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,

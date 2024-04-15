@@ -2,6 +2,10 @@ DESKTOP=0
 PYENV=0
 NVIM=1
 
+smart_pipe_to() {
+	grep -qxF $2 $1 || echo $2 >> $1;
+}
+
 for arg in "$@"
 do
 	if [ "$arg" == "-h" ]; then
@@ -21,25 +25,31 @@ do
 	fi
 done
 
-install_list="cmake build-essential python3-dev npm i3"
+install_list="cmake build-essential python3-dev python3-pip npm i3"
 
 cp -r .config/ .fonts/ .local/ ~/
 cp .vimrc ~/
 sudo apt install $install_list
 
 localbin=$HOME/.local/bin
-mkdir -r "$localbin"
-echo '' >> $HOME/.bashrc
-echo 'export PATH="$PATH:'$localbin >> $HOME/.bashrc
+mkdir -p "$localbin"
+smart_pipe_to $HOME/.bashrc 'export PATH="$PATH:'$localbin'"'
 
 if [ $NVIM == 1 ]; then
 	sudo apt purge neovim
 	curl -L https://github.com/neovim/neovim/releases/latest/download/nvim.appimage -o "${localbin}/nvim"
-	pip3 install neovim
+	chmod +x "${localbin}/nvim"
+	# pip3 install neovim
+	sudo apt install python3-neovim
 fi
 
 if [ $PYENV == 1 ]; then
 	echo "Installing miniconda"
 	wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 	bash https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+fi
+
+if [ $DEBIAN == 1 ]; then
+	sudo apt install bash-completion
+	smart_pipe_to /etc/bash.bashrc "if [ -f /etc/bash_completion ]; then . /etc/bash_completion ; fi"
 fi
