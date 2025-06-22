@@ -40,7 +40,7 @@ mkdir -p "$localbin"
 smart_pipe_to $HOME/.bashrc 'export PATH="$PATH:'$localbin'"'
 
 if [ $COPY == 1 ]; then
-	cp -r .config/ .fonts/ .local/ ~/
+	cp -r .config/ .local/ ~/
 	cp .vimrc ~/
 	sudo apt install $install_list
 fi
