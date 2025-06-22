@@ -132,7 +132,7 @@ bindsym $mod+Shift+r restart
 # Plasma 5
 # bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
 # Plasma >= 6.3.7 
-bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.LogoutPrompt /LogoutPrompt promptAll
+bindsym $mod+Shift+e exec --no-startup-id qdbus6 org.kde.LogoutPrompt /LogoutPrompt promptAll
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -203,5 +203,5 @@ for_window [floating] border none
 focus_on_window_activation urgent
 #focus_on_window_activation none
 mouse_warping none
-no_focus [window_role="popup]
+#no_focus [window_role="popup]
 

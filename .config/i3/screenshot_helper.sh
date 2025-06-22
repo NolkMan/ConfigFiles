@@ -42,13 +42,14 @@ if [ $1 == "setdir" ]; then
 		TLOC=~/$TLOC
 	fi
 	echo $TLOC > $LOC
+	echo "screencapture" > $NAME
 	mkdir $TLOC
 fi
 
 if [ $1 == "init" ]; then
 	mkdir $BASE
 	echo "/dev/null" > $LOC
-	echo "" > $NAME
+	echo "screencapture" > $NAME
 fi
 
 
