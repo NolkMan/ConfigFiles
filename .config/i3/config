@@ -11,6 +11,9 @@
 
 set $mod Mod1
 
+set $monitor_main eDP-1
+set $monitor_alt HDMI-1
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Cantarell 10
@@ -30,7 +33,7 @@ font pango:Cantarell 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec /usr/bin/konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -92,6 +95,8 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+workspace_layout stacking
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -105,36 +110,29 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+set $altws1 "Alt 1"
+set $altws2 "Alt 2"
+set $altws3 "Alt 3"
+set $altws4 "Alt 4"
+set $altws5 "Alt 5"
+set $altws6 "Alt 6"
+set $altws7 "Alt 7"
+set $altws8 "Alt 8"
+set $altws9 "Alt 9"
+set $altws10 "Alt 10"
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+include workspaces.conf
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# using plasma's logout screen instead of i3's
+# Plasma 5
+# bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
+# Plasma >= 6.3.7 
+bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.LogoutPrompt /LogoutPrompt promptAll
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -149,6 +147,11 @@ mode "resize" {
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
+        bindsym Shift+h resize shrink width 1 px or 1 ppt
+        bindsym Shift+j resize grow height 1 px or 1 ppt
+        bindsym Shift+k resize shrink height 1 px or 1 ppt
+        bindsym Shift+l resize grow width 1 px or 1 ppt
+
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
@@ -161,13 +164,44 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+
+
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-client.focused          #2e3436 #2e3436 #ffffff #2e3436   #2e3436
-exec_always --no-startup-id feh --bg-scale /usr/share/backgrounds/macaw-poly2.jpg
-
 # screenshots
-bindsym --release $mod+p exec "import $HOME/screenshots/$(date '+%y-%m-%d-%T').png"
+include screenshot.conf
+
+exec --no-startup-id wmctrl -c Plasma
+exec --no-startup-id picom -cCFb -r 0 -o 0 -l 0 -t 0
+
+# for_window [title="Desktop - Plasma"] kill, floating enable, border none
+for_window [title="Desktop @ QRect.*"] kill, floating enable, border none
+
+include for_plasma.conf
+
+#for_window [class="Proxy filter"] floating enable, resize set 600 px 400 px, move position 1250 px 300 px
+for_window [class="burp" title="(?i)proxy filter"] floating enable
+for_window [class="burp" title="(?i)history filter"] floating enable
+for_window [class="burp" title="(?i)site map filter"] floating enable
+for_window [class="burp" title="(?i)settings"] floating enable
+for_window [class="burp" title="(?i)licensed"] move container to workspace $altws3
+assign [class="(?i)chromium"] $altws2
+assign [class="(?i)remmina"] $altws4
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #8b20df #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #724983 #ffffff #484e50   #5f676a
+#client.focused          #ffffff #285577 #ffffff #2e9ef4   #285577
+
+# make so that fullscreen and sometimes split windows have no borders
+default_border none
+default_floating_border none
+for_window [floating] border none
+# hide_edge_borders both
+
+# don't jump to windows on alerts, pings, updates and what more
+focus_on_window_activation urgent
+#focus_on_window_activation none
+mouse_warping none
+no_focus [window_role="popup]
+
