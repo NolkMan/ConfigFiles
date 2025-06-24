@@ -16,6 +16,8 @@ return require('packer').startup(function(use)
 	}
 
 	use('mbbill/undotree')
+	-- use { "ellisonleao/gruvbox.nvim" }
+	use { "rebelot/kanagawa.nvim" }
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',
