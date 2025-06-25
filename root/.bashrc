@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export PATH=$HOME/.local/bin:$PATH
+# export PATH=$HOME/.local/bin:$PATH
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -14,7 +14,7 @@ function make_ps1(){
 	#local white='\e[0;37m' # this is true white
 	local white='\e[0m' # this is actually a reset
 	#local purple='\e[0;35m'
-	local purple='\e[1;95m'
+	local purple='\e[1;91m'
 
 	local save='\e[s'
 	local restore='\e[u'
@@ -36,14 +36,8 @@ function make_ps1(){
 PS1=$(make_ps1)
 unset make_ps1
 
-LS_COLORS=$LS_COLORS:'di=1;95:'
+LS_COLORS=$LS_COLORS:'di=1;91:'
 export LS_COLORS
 
 set -o vi
-
-# PYENV Lines
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
-eval "$(pyenv virtualenv-init -)"
 
