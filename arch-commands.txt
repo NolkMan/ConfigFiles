@@ -1,0 +1,19 @@
+# https://wiki.archlinux.org/title/Installation_guide
+# https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system
+#
+#
+
+cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --key-size 256 --hash sha256 --iter-time 5000 --use-urandom --verify-passphrase --sector-size 4096 /dev/nvme0n1p5
+cryptsetup open /dev/nvme0n1p5 root
+mkfs.btrfs --label arch-root /dev/mapper/root
+mount -o compress=lzo /dev/mapper/root /mnt
+# Make sure the partition is EFI partition for the next one
+mkfs.fat -F 32 /dev/nvme
+pacstrap -K /mnt base linux linux-firmware linux-headers linux-lts linux-lts linux-lts-headers
+genfstab -U -p /mnt >> /mnt/etc/fstab
+arch-chroot /mnt
+pacman -S base-devel iwd firefox vi networkmanager neovim python-neovim python-pip man-db man-pages plasma-desktop plasma-x11-session btrfs-progs cryptsetup dosfstools systemd sddm
+passwd
+useradd -m -G wheel <<uname>>
+passwd <<uname>>
+

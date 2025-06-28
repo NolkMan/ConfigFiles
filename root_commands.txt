@@ -1,0 +1,17 @@
+pacman -S base-devel iwd networkmanager neovim python-neovim man-db man-pages plasma-workspace kwin-x11 btrfs-progs cryptsetup dosfstools systemd bash-completion git ttf-fira-code ttf-fira-mono ttf-fira-sans plasma-nm maim xclip xdotool dolphin cmake clang zram-generator unzip sbctl wireguard-tools systemd-ukify efitools sbsigntools 
+
+systemctl enable NetworkManager
+systemctl start NetworkManager
+
+# add systemwide plasma-i3 from arch wiki
+# touch /usr/local/bin/plasma-i3.sh
+# chmod +x /usr/local/bin/plasma-i3.sh
+# kwriteconfig6 --file startkderc --group General --key systemdBoot false
+
+# Add zram with zram-generator according to Arch wiki
+
+# Adding fido2/tpm
+systemd-cryptenroll /dev/nvme0n1p5 --recovery-key
+
+# Using secure boot with the sbctl
+
