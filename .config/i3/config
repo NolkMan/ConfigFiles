@@ -130,9 +130,11 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 # using plasma's logout screen instead of i3's
 # Plasma 5
-# bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
+#bindsym $mod+Shift+Control+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
+bindsym $mod+Shift+Control+e exec --no-startup-id logout
 # Plasma >= 6.3.7 
-bindsym $mod+Shift+e exec --no-startup-id qdbus6 org.kde.LogoutPrompt /LogoutPrompt promptAll
+exec --no-startup-id "~/.config/i3/fakwin"
+bindsym $mod+Shift+e exec --no-startup-id "qdbus6 org.kde.LogoutPrompt /LogoutPrompt promptAll"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -172,9 +174,9 @@ bindsym $mod+r mode "resize"
 include screenshot.conf
 
 exec --no-startup-id wmctrl -c Plasma
-exec --no-startup-id picom -cCFb -r 0 -o 0 -l 0 -t 0
+# exec --no-startup-id picom -cCFb -r 0 -o 0 -l 0 -t 0
 
-# for_window [title="Desktop - Plasma"] kill, floating enable, border none
+for_window [title="Desktop - Plasma"] kill, floating enable, border none
 for_window [title="Desktop @ QRect.*"] kill, floating enable, border none
 
 include for_plasma.conf
