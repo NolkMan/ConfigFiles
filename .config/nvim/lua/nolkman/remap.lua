@@ -26,7 +26,6 @@ end)
 
 vim.api.nvim_create_user_command('W', 'write', {})
 
-
 -- Keymaps if there was more coding actually
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")

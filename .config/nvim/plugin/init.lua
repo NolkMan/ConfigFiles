@@ -8,6 +8,8 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+	use('nvim-treesitter/playground')
+
 
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.8',
@@ -16,8 +18,8 @@ return require('packer').startup(function(use)
 	}
 
 	use('mbbill/undotree')
-	-- use { "ellisonleao/gruvbox.nvim" }
 	use { "rebelot/kanagawa.nvim" }
+	use { "folke/tokyonight.nvim" }
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',
