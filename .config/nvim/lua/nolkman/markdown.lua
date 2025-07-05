@@ -32,15 +32,6 @@ M.setup = function(config)
 		end
 	end
 
-	-- vim.cmd [[ highlight default link Todo ColorColumn ]] -- defined in color scheme
-	vim.cmd [[ highlight default link Warn ColorColumn ]]
-	vim.cmd [[ highlight default link Erro ColorColumn ]]
-	vim.cmd [[ highlight default link Done ColorColumn ]]
-
-	vim.cmd [[highlight Done guibg=#ABED7D guifg=#000000]]
-	vim.cmd [[highlight Warn guibg=#FEAF7F guifg=#000000]]
-	vim.cmd [[highlight Erro guibg=#EF6461 guifg=#000000]]
-
 	vim.cmd [[
         augroup Markdown
         autocmd FileChangedShellPost,Syntax,TextChanged,InsertLeave,WinScrolled * lua require('nolkman.markdown').refresh()
@@ -60,6 +51,16 @@ M.refresh = function()
 	if not c or not c.query then
 		return
 	end
+
+	-- Putting those here as the markdown would like to use it's own colorscheme
+	-- vim.cmd [[ highlight default link Todo ColorColumn ]] -- defined in color scheme
+	vim.cmd [[ highlight default link Warn ColorColumn ]]
+	vim.cmd [[ highlight default link Erro ColorColumn ]]
+	vim.cmd [[ highlight default link Done ColorColumn ]]
+
+	vim.cmd [[highlight Done guibg=#ABED7D guifg=#000000]]
+	vim.cmd [[highlight Warn guibg=#FEAF7F guifg=#000000]]
+	vim.cmd [[highlight Erro guibg=#EF6461 guifg=#000000]]
 
 	local language = c.treesitter_language or vim.bo.filetype
 	local language_tree = vim.treesitter.get_parser(bufnr, language)
