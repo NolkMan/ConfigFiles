@@ -131,10 +131,11 @@ bindsym $mod+Shift+r restart
 # using plasma's logout screen instead of i3's
 # Plasma 5
 #bindsym $mod+Shift+Control+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
-bindsym $mod+Shift+Control+e exec --no-startup-id logout
+# bindsym $mod+Shift+Control+e exec --no-startup-id logout
 # Plasma >= 6.3.7 
 exec --no-startup-id "~/.config/i3/fakwin"
 bindsym $mod+Shift+e exec --no-startup-id "qdbus6 org.kde.LogoutPrompt /LogoutPrompt promptAll"
+bindsym $mod+Control+e exec --no-startup-id "kstart loginctl lock-session"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -175,6 +176,8 @@ include screenshot.conf
 
 exec --no-startup-id wmctrl -c Plasma
 # exec --no-startup-id picom -cCFb -r 0 -o 0 -l 0 -t 0
+# Make sure that mouse shortcuts work
+exec --no-startup-id xbindkeys -p
 
 for_window [title="Desktop - Plasma"] kill, floating enable, border none
 for_window [title="Desktop @ QRect.*"] kill, floating enable, border none
@@ -191,19 +194,22 @@ assign [class="(?i)chromium"] $altws2
 assign [class="(?i)remmina"] $altws4
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #8b20df #ffffff #2e9ef4   #285577
-client.focused_inactive #333333 #724983 #ffffff #484e50   #5f676a
-#client.focused          #ffffff #285577 #ffffff #2e9ef4   #285577
+client.focused          #282525 #8e44ad #e8e8e8 #80ffff   #181616
+client.focused_inactive #282525 #4d2b5a #e8e8e8 #80ffff   #181616
+client.unfocused        #282525 #181616 #877878 #80ffff   #181616
+client.urgent           #282525 #a6392b #e8e8e8 #a6392b   #a6392b
+
 
 # make so that fullscreen and sometimes split windows have no borders
 default_border none
 default_floating_border none
 for_window [floating] border none
-# hide_edge_borders both
+
+# even less overall borders
+hide_edge_borders both
 
 # don't jump to windows on alerts, pings, updates and what more
-focus_on_window_activation urgent
-#focus_on_window_activation none
+focus_on_window_activation none
 mouse_warping none
 #no_focus [window_role="popup]
 
