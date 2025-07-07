@@ -194,9 +194,9 @@ assign [class="(?i)chromium"] $altws2
 assign [class="(?i)remmina"] $altws4
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #282525 #8e44ad #e8e8e8 #80ffff   #181616
-client.focused_inactive #282525 #4d2b5a #e8e8e8 #80ffff   #181616
-client.unfocused        #282525 #181616 #877878 #80ffff   #181616
+client.focused          #282525 #8e44ad #e8e8e8 #6791e4   #181616
+client.focused_inactive #282525 #4d2b5a #e8e8e8 #6791e4   #181616
+client.unfocused        #282525 #181616 #877878 #6791e4   #181616
 client.urgent           #282525 #a6392b #e8e8e8 #a6392b   #a6392b
 
 
@@ -212,4 +212,7 @@ hide_edge_borders both
 focus_on_window_activation none
 mouse_warping none
 #no_focus [window_role="popup]
+
+# Background
+exec_always --no-startup-id feh --no-fehbg --bg-scale '/home/fretka/tools/backgrounds/hol3.jpg'
 
