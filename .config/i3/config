@@ -9,6 +9,9 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# Make so that this loads quickly
+include visuals.conf
+
 set $mod Mod1
 
 set $monitor_main eDP-1
@@ -167,20 +170,15 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-
-
 bindsym $mod+r mode "resize"
 
 # screenshots
 include screenshot.conf
 
 exec --no-startup-id wmctrl -c Plasma
-# exec --no-startup-id picom -cCFb -r 0 -o 0 -l 0 -t 0
+# exec --no-startup-id picom -cCFb -r 0 -o 0 -l 0 -t 0 # This is needed for transparency (which I'm not using)
 # Make sure that mouse shortcuts work
 exec --no-startup-id xbindkeys -p
-
-for_window [title="Desktop - Plasma"] kill, floating enable, border none
-for_window [title="Desktop @ QRect.*"] kill, floating enable, border none
 
 include for_plasma.conf
 
@@ -193,26 +191,7 @@ for_window [class="burp" title="(?i)licensed"] move container to workspace $altw
 assign [class="(?i)chromium"] $altws2
 assign [class="(?i)remmina"] $altws4
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #282525 #8e44ad #e8e8e8 #6791e4   #181616
-client.focused_inactive #282525 #4d2b5a #e8e8e8 #6791e4   #181616
-client.unfocused        #282525 #181616 #877878 #6791e4   #181616
-client.urgent           #282525 #a6392b #e8e8e8 #a6392b   #a6392b
-
-
-# make so that fullscreen and sometimes split windows have no borders
-default_border none
-default_floating_border none
-for_window [floating] border none
-
-# even less overall borders
-hide_edge_borders both
-
 # don't jump to windows on alerts, pings, updates and what more
 focus_on_window_activation none
 mouse_warping none
 #no_focus [window_role="popup]
-
-# Background
-exec_always --no-startup-id feh --no-fehbg --bg-scale '/home/fretka/tools/backgrounds/hol3.jpg'
-
