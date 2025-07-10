@@ -19,10 +19,18 @@ function make_ps1(){
 	local save='\e[s'
 	local restore='\e[u'
 
-	# save and move to the right (-3)
-	local ps1=${save}'\e[${COLUMNS}C\e[3D'
+	# save and move to the right 
+	local ps1=${save}'\e[${COLUMNS}C'
+	# move number left
+	ps1=${ps1}'\e[22D'
+	# move half of the stuff to the right
+	ps1=${ps1}'\e[$((15 - $(expr length + $(basename ${VIRTUAL_ENV:-/--}))))C'
 	# write 4 character on the right of the line
-	ps1=${ps1}${purple}'--=='
+	# Some art at the end of the line that becomes virtual env after 
+	ps1=${ps1}${purple}'>='${white}'['${purple}
+	ps1=${ps1}'$(basename ${VIRTUAL_ENV:-/--})'
+	ps1=${ps1}${white}']'${purple}'=<'
+	# restore and continues from the begging
 	ps1=${ps1}${restore}
 	ps1=${ps1}${purple}'=='${white}'['
 	ps1=${ps1}${purple}'\u'${white}'@'${purple}'\h'
@@ -40,4 +48,8 @@ LS_COLORS=$LS_COLORS:'di=1;91:'
 export LS_COLORS
 
 set -o vi
+export MANPAGER='nvim +Man!'
+
+alias envy='nvim -R "+set noreadonly" "+setlocal nomodifiable"'
+alias nvim='nvim -p'
 
