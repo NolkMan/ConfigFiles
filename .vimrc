@@ -1,10 +1,9 @@
-let $VIM = $HOME . "/vim"
-let $VIMRUNTIME = $HOME . "/vim/runtime"
-set runtimepath^=$VIMRUNTIME
-set helpfile=$VIMRUNTIME/doc/help.txt
+" let $VIM = $HOME . "/vim"
+" let $VIMRUNTIME = $HOME . "/vim/runtime"
+" set runtimepath^=$VIMRUNTIME
+" set helpfile=$VIMRUNTIME/doc/help.txt
 
 set nocompatible
-filetype off                  " required
 
 filetype plugin indent on
 syntax on
@@ -38,14 +37,6 @@ command! W w
 
 set backspace=indent,eol,start
 
-noremap <F12> <Esc>:syntax sync fromstart<CR>
-inoremap <F12> <C-o>:syntax sync fromstart<CR>
-
 set background=dark
-let g:gruvbox_contrast_dark = 'hard'
-set guifont=Fira_Mono:h10
-colorscheme gruvbox
+colorscheme habamax
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
