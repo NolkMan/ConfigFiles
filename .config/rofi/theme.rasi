@@ -1,0 +1,223 @@
+/**
+ * rofi -dump-theme output.
+ * Rofi version: 2.0.0
+ **/
+* {
+
+// The basic colors
+	selection-foreground:#c8c093;
+	selection-background:#2d4f67;
+
+	cursor:		#c8c093;
+
+	url-color:		#72a7bc;
+
+// Tab bar colors
+	active-tab-foreground:		#c8c093;
+	active-tab-background:		#12120f;
+	inactive-tab-foreground:		#a6a69c;
+	inactive-tab-background:		#12120f;
+
+	black1:		#0d0c0c;
+	black2:		#1D1C19;
+	black4:		#282727;
+	black5:     #393836;
+	black6:     #625e5a;
+
+	red1:		#c4746e;
+	red2:		#e46876;
+	green1:		#8a9a7b;
+	green2:		#87a987;
+	yellow1:		#c4b28a;
+	yellow2:		#e6c384;
+	yellow3:    #de9800;
+	blue1:		#8ba4b0;
+	blue2:		#7fb4ca;
+	blue3:		#9fb5c9;
+	blue5:		#5d57a3;
+	magenta1:		#a292a3;
+	magenta2:		#938aa9;
+	cyan1:		#8ea4a2;
+	cyan2:		#7aa89f;
+	white1:		#c8c093;
+	white2:		#c5c9c5;
+
+	color16:		#b6927b;
+	color17:		#b98d7b;
+
+    gruvbox-dark-red-light:      rgba ( 255, 0, 0, 100 % );
+    gruvbox-dark-bg0-hard:       rgba ( 255, 0, 0, 100 % );
+    gruvbox-dark-bg2:            rgba ( 255, 0, 0, 100 % );
+    gruvbox-dark-red-dark:       rgba ( 255, 0, 0, 100 % );
+    gruvbox-dark-fg0:            rgba ( 255, 0, 0, 100 % );
+    gruvbox-dark-fg1:            rgba ( 255, 0, 0, 100 % );
+    gruvbox-dark-yellow-dark:    rgba ( 255, 0, 0, 100 % );
+    gruvbox-dark-yellow-light:   rgba ( 255, 0, 0, 100 % );
+    gruvbox-dark-gray:           rgba ( 255, 0, 0, 100 % );
+    gruvbox-dark-bg0:            rgba ( 255, 0, 0, 100 % );
+	
+	background-color: #181616;
+
+    border-color:                var(blue1);
+    scrollbar-handle:            var(border-color);
+    separatorcolor:              var(border-color);
+
+	scrollbar-background:        var(blue1);
+
+	background:                  var(black2);
+    urgent-background:           var(background);
+    active-background:           var(background);
+    normal-background:           var(background);
+    background-color:            var(background);
+
+	foreground:                  var(yellow1);
+    alternate-normal-foreground: var(foreground);
+    active-foreground:           var(foreground);
+    alternate-active-foreground: var(foreground);
+    urgent-foreground:           var(foreground);
+    normal-foreground:           var(foreground);
+
+	alternate-background:        var(black4);
+    alternate-normal-background: var(alternate-background);
+    alternate-active-background: var(alternate-background);
+    alternate-urgent-foreground: var(alternate-background);
+    alternate-urgent-background: var(alternate-background);
+
+	selected-foregrund:          var(yellow1);
+    selected-urgent-foreground:  var(selected-foregrund);
+    selected-active-foreground:  var(selected-foregrund);
+    selected-normal-foreground:  var(selected-foregrund);
+
+	selected-background:         var(selection-background);
+    selected-active-background:  var(selected-background);
+    selected-normal-background:  var(selected-background);
+    selected-urgent-background:  var(selected-background);
+
+
+    highlight:                   bold italic ;
+    scrollbar:                   true;
+}
+window {
+    padding:          2;
+    background-color: var(background);
+    border:           2;
+	width:            50em;
+}
+mainbox {
+    padding: 0;
+    border:  0;
+}
+message {
+    padding:      1px ;
+    border-color: var(separatorcolor);
+    border:       2px 0px 0px ;
+}
+textbox {
+    highlight:  var(highlight);
+    text-color: var(foreground);
+}
+listview {
+    padding:      2px 0px 0px ;
+    scrollbar:    var(scrollbar);
+    border-color: var(separatorcolor);
+    spacing:      2px ;
+    border:       2px 0px 0px ;
+}
+element {
+    padding:     2px ;
+    orientation: horizontal;
+    spacing:     5px ;
+    border:      0;
+    children:    [ "element-text" ];
+}
+element normal.normal {
+    background-color: var(normal-background);
+    text-color:       var(normal-foreground);
+}
+element normal.urgent {
+    background-color: var(urgent-background);
+    text-color:       var(urgent-foreground);
+}
+element normal.active {
+    background-color: var(active-background);
+    text-color:       var(active-foreground);
+}
+element selected.normal {
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
+}
+element selected.urgent {
+    background-color: var(selected-urgent-background);
+    text-color:       var(selected-urgent-foreground);
+}
+element selected.active {
+    background-color: var(selected-active-background);
+    text-color:       var(selected-active-foreground);
+}
+element alternate.normal {
+    background-color: var(alternate-normal-background);
+    text-color:       var(alternate-normal-foreground);
+}
+element alternate.urgent {
+    background-color: var(alternate-urgent-background);
+    text-color:       var(alternate-urgent-foreground);
+}
+element alternate.active {
+    background-color: var(alternate-active-background);
+    text-color:       var(alternate-active-foreground);
+}
+scrollbar {
+    width:        6px ;
+    padding:      0;
+    handle-width: 10px ;
+    border:       0;
+    handle-color: var(scrollbar-handle);
+}
+mode-switcher {
+    border-color: var(separatorcolor);
+    border:       2px 0px 0px ;
+}
+inputbar {
+    padding:    2px ;
+    spacing:    0;
+    text-color: var(normal-foreground);
+    children:   [ "prompt","textbox-prompt-sep","entry","case-indicator" ];
+}
+case-indicator {
+    spacing:    0;
+    text-color: var(normal-foreground);
+}
+entry {
+    spacing:    0;
+    text-color: var(normal-foreground);
+	font: "Fira Mono 12";
+}
+prompt {
+    spacing:    0;
+    text-color: var(normal-foreground);
+	font: "Fira Mono 12";
+}
+button {
+    spacing:    0;
+    text-color: var(normal-foreground);
+}
+button selected {
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
+}
+textbox-prompt-sep {
+    margin:     0px 0.3000em 0px 0px ;
+    expand:     false;
+    str:        ":";
+    text-color: var(normal-foreground);
+}
+element-text {
+    background-color: inherit;
+    vertical-align:   0.50;
+    text-color:       inherit;
+}
+element-icon {
+    background-color: inherit;
+    size:             2.0000em ;
+    text-color:       inherit;
+}

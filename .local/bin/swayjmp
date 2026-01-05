@@ -1,0 +1,14 @@
+#!/bin/bash
+
+FROM_PID=`swaymsg -t get_tree | jq '.. | select(.type?) | select(.pid=='$1')'`
+# echo $FROM_PID
+if [ -n "$FROM_PID" ] ; then
+	swaymsg "[pid=$1]" focus
+	exit
+fi
+FROM_NAME=`swaymsg -t get_tree | jq '.. | select(.type?) | select(.app_id=="'$1'")'`
+# echo $FROM_NAME
+if [ -n "$FROM_NAME" ] ; then
+	swaymsg [app_id="$1"] focus
+	exit
+fi

@@ -53,10 +53,13 @@ export MANPAGER='nvim +Man!'
 alias envy='nvim -R "+set noreadonly" "+setlocal nomodifiable"'
 alias nvim='nvim -p'
 
+alias icat='kitten icat'
+
 # PYENV Lines
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - bash)"
 eval "$(pyenv virtualenv-init -)"
+
 

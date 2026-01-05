@@ -1,0 +1,47 @@
+max-history=10
+sort=-priority
+
+on-button-left=exec ~/.config/mako/mako-pick.sh "$id"
+on-button-right=dismiss --no-history
+on-notify=exec ~/.config/mako/mako-center.sh "$id"
+
+font=Fira Mono 11
+background-color=#282727
+text-color=#c8c093
+margin=5
+padding=2
+border-size=2
+border-color=#8ba4b0
+progress-color=over #c8c093 
+# max-icon-size=px
+icon-location=right
+#default-timeout=20000
+max-visible=7
+#format=<b>%s</b>\n%b
+output=eDP-1
+
+[urgency="critical"]
+default-timeout=0
+text-color=#c5c9c5
+background-color=#282727
+border-color=#c4746e
+
+[urgency="low"]
+text-color=#c8c093
+default-timeout=10000
+height=44
+
+[mode="list"]
+max-visible=-1
+
+[app-name="vesktop"]
+default-timeout=10000
+height=330
+
+[mode="pop"]
+default-timeout=0
+invisible=1
+
+[mode="show"]
+default-timeout=0
+invisible=1

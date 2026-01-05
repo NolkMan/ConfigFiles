@@ -18,15 +18,20 @@ get_location() {
 }
 
 if [ $1 == "window" ]; then
-	maim -i $(xdotool getactivewindow) -u | tee $(get_location) | xclip -selection clipboard -t image/png
+	grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | tee $(get_location) | wl-copy -t image/png
 fi
 
 if [ $1 == "selection" ]; then 
-	maim -s -u | tee $(get_location) | xclip -selection clipboard -t image/png
+	grim -g "$(slurp)" - | tee $(get_location) | wl-copy -t image/png
 fi
 
+if [ $1 == "extract_text" ]; then
+	grim -g "$(slurp)" - | tesseract - - 2>/dev/null | wl-copy
+fi
+	
+
 if [ $1 == "setname" ]; then
-	TNAME=$(cat $NAME | dmenu)
+	TNAME=$(cat $NAME | rofi -dmenu)
 	if [[ $TNAME == "" ]]; then
 		TNAME=screencapture
 	fi
@@ -34,7 +39,7 @@ if [ $1 == "setname" ]; then
 fi
 
 if [ $1 == "setdir" ]; then
-	TLOC=$(find ~ -path '*/.*' -prune -o -type d -printf '%P\n' | dmenu)
+	TLOC=$(find ~ -path '*/.*' -prune -o -type d -printf '%P\n' | rofi -dmenu)
 	if [[ $TLOC == "" ]]; then
 		TLOC=/dev/null
 	fi

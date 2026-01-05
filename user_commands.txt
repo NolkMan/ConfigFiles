@@ -1,11 +1,2 @@
-mkdir -p ~/.config/systemd/user/
-touch ~/.config/systemd/user/plasma-i3-wm.service
-kwriteconfig6 --file startkderc --group General --key systemdBoot false
-
-# Making sure that the logout works from the KDE + i3 (due to a known bug :))
-git clone https://github.com/DMaroo/fakwin.git
-cd fakwin
-mkdir build
-cd build
-cmake ..
-make
+# make sure gdk themes work with
+nwg-look

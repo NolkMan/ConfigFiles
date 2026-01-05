@@ -1,0 +1,30 @@
+#!/bin/bash
+
+TERMINAL_PID=`swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .pid'`
+
+COMMAND="$1"
+shift
+
+START=`date +%s%N`
+
+$COMMAND "$@"
+RETURN=$?
+
+END=`date +%s%N`
+
+TIME_S=$(( (END - START) / 1000000000 ))
+
+if (( $TIME_S > 2 )); then
+	URGENCY="normal"
+	if (( $TIME_S < 20 )) ; then 
+		URGENCY="low"
+	fi
+	if [ $RETURN -ne 0 ] ; then
+		# untested - but should work
+		URGENCY="critical"
+	fi
+	echo $URGENCY
+	notify-send --app-name=$TERMINAL_PID --urgency=$URGENCY "Finished: $COMMAND" "$@"
+fi
+
+exit $RETURN

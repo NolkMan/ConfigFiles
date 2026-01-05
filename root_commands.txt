@@ -1,4 +1,7 @@
-pacman -S base-devel iwd networkmanager neovim python-neovim man-db man-pages plasma-workspace kwin-x11 btrfs-progs cryptsetup dosfstools systemd bash-completion git ttf-fira-code ttf-fira-mono ttf-fira-sans plasma-nm maim xclip xdotool dolphin cmake clang zram-generator unzip sbctl wireguard-tools systemd-ukify efitools sbsigntools i3 kscreen xbindkeys bluez bluez-utils bluedevil ueberzug imagemagick
+pacman -S base-devel iwd networkmanager neovim python-neovim man-db man-pages btrfs-progs cryptsetup dosfstools systemd bash-completion git ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-fira-code ttf-fira-code-nerd cmake clang unzip sbctl wireguard-tools systemd-ukify efitools sbsigntools bluez bluez-utils bluedevil ueberzug imagemagick
+
+pacman -S sway swaylock waybar kitty hyprpicker grim slurp wl-clipboard wtype mako xdg-desktop-portal-gtk xdg-desktop-portal-wlr tesseract tesseract-data-eng
+pacman -S thunar gvfs thunar-archive-plugin thunar-media-tags-plugin thunar-shares-plugin thunar-volman tumbler webp-pixbuf-loader ffmpegthumbnailer pop-gtk-theme nwg-look
 
 systemctl enable NetworkManager
 systemctl start NetworkManager
@@ -8,13 +11,6 @@ systemctl start bluetooth.service
 
 systemctl enable sddm
 systemctl start sddm
-
-# add systemwide plasma-i3 from arch wiki
-# touch /usr/local/bin/plasma-i3.sh
-# chmod +x /usr/local/bin/plasma-i3.sh
-# kwriteconfig6 --file startkderc --group General --key systemdBoot false
-
-# Add zram with zram-generator according to Arch wiki
 
 # Adding fido2/tpm
 systemd-cryptenroll /dev/nvme0n1p5 --recovery-key
