@@ -1,6 +1,6 @@
-pacman -S base-devel iwd networkmanager neovim python-neovim man-db man-pages btrfs-progs cryptsetup dosfstools systemd bash-completion git ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-fira-code ttf-fira-code-nerd cmake clang unzip sbctl wireguard-tools systemd-ukify efitools sbsigntools bluez bluez-utils bluedevil ueberzug imagemagick
+pacman -S base-devel iwd networkmanager neovim python-neovim man-db man-pages btrfs-progs cryptsetup dosfstools systemd bash-completion git ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-fira-code ttf-fira-code-nerd otf-font-awesome cmake clang unzip sbctl wireguard-tools systemd-ukify efitools sbsigntools bluez bluez-utils bluedevil ueberzug imagemagick
 
-pacman -S sway swaylock waybar kitty hyprpicker grim slurp wl-clipboard wtype mako xdg-desktop-portal-gtk xdg-desktop-portal-wlr tesseract tesseract-data-eng
+pacman -S sway swaylock waybar rofi kitty hyprpicker grim slurp wl-clipboard wtype mako xdg-desktop-portal-gtk xdg-desktop-portal-wlr tesseract tesseract-data-eng
 pacman -S thunar gvfs thunar-archive-plugin thunar-media-tags-plugin thunar-shares-plugin thunar-volman tumbler webp-pixbuf-loader ffmpegthumbnailer pop-gtk-theme nwg-look
 
 systemctl enable NetworkManager
