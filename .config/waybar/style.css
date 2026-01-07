@@ -33,8 +33,11 @@
 }
 
 window#waybar {
-	background: rgba(15, 15, 20, 0.3);
-  border-bottom: 1px solid rgba(149, 127, 184, 0.3);
+	/*background: rgba(24, 22, 22, 0.5);*/
+	background: rgba(18, 18, 15, 0.3);
+/*	background: @black1;*/
+  /*border-bottom: 1px solid @black4;*/
+  border-bottom: 1px solid rgba(40, 39, 39, 0.3);
 }
 
 /* -----------------------------------------------------------------------------
@@ -70,7 +73,7 @@ tooltip label {
 	padding: 0px 8px;
 	margin: 1px 2px;
 	background: @background-primary;
-	color: @subtext0;
+	color: @orange;
 	border-radius: 8px;
 	font-weight: bold;
 	border: 1px solid @border-color;
@@ -88,22 +91,27 @@ tooltip label {
 
 #workspaces button.active,
 #workspaces button.focused {
-	background: @mauve;
+	background: @carpyellow;
 	color: @base;
 	font-weight: bold;
 	opacity: 1;
+	border: 1px solid @orange;
 	/*border-color: @pink;*/
 }
 
 #workspaces button.empty {
-	opacity: 0.3;
+	opacity: 0.4;
 	background: @background-secondary;
+	color: @orange;
+}
+#workspaces button.focused {
+	opacity: 1;
 }
 
 #workspaces button.urgent {
 	background: @error;
 	color: @base;
-	border-color: @maroon;
+	border-color: @error-border;
 }
 
 /* -----------------------------------------------------------------------------
@@ -124,11 +132,12 @@ tooltip label {
 * -------------------------------------------------------------------------- */
 
 #clock {
-	background: @blue;
+	background: @teal;
 	color: @base;
 	font-weight: bold;
-	margin: 0px 0px 0px 0px;
-	padding: 0px 9px 0 0;
+	margin: 0px 0px 0px 2px;
+	padding: 0px 8px 0 0;
+	border: 0px solid @teal;
 	border-radius: 8px 4px 4px 8px;
 	font-size: 15px;
 }
@@ -139,31 +148,31 @@ tooltip label {
 
 #cpu {
 	background: @background-primary;
-	color: @blue;
-	border-left: 4px solid @blue;
+	color: @teal;
+	border-left: 4px solid @teal;
 	border-radius: 12px 0 0 12px;
 	margin: 6px 0px 6px 0;
-	padding: 4px 12px;
+	padding: 4px 14px 4px 10px;
 }
 
 #cpu.critical {
 	background: @error;
 	color: @base;
-	border-left: 4px solid @maroon;
+	border-left: 4px solid @error-border;
 }
 
 #memory {
 	background: @background-primary;
-	color: @green;
-	border-left: 4px solid @green;
-	margin: 6px 0;
-	padding: 4px 12px;
+	color: @teal;
+	border-left: 4px solid @teal;
+	margin: 6px 0 6px 0;
+	padding: 4px 13px 4px 10px;
 }
 
 #memory.critical {
 	background: @error;
 	color: @base;
-	border-left: 4px solid @maroon;
+	border-left: 4px solid @error-border;
 }
 
 #temperature {
@@ -171,14 +180,14 @@ tooltip label {
 	color: @teal;
 	border-left: 4px solid @teal;
 	border-radius: 0 12px 12px 0;
-	margin: 6px 2px 6px 0;
-	padding: 4px 12px;
+	margin: 6px 4px 6px 0;
+	padding: 4px 12px 4px 10px;
 }
 
 #temperature.critical {
 	background: @error;
 	color: @base;
-	border-left: 4px solid @maroon;
+	border-left: 4px solid @error-border;
 }
 
 /* -----------------------------------------------------------------------------
@@ -189,14 +198,14 @@ tooltip label {
 	background: @background-primary;
 	color: @green;
 	border-left: 4px solid @green;
-	margin: 6px 2px;
+	margin: 6px 2px 6px 0px;
 	padding: 4px 12px;
-	border-radius: 12px;
+	border-radius: 0px 12px 12px 0px;
 }
 
 #battery.charging {
-	color: @yellow;
-	border-left: 4px solid @yellow;
+	color: @green;
+	border-left: 4px solid @green;
 }
 
 #battery.warning {
@@ -208,7 +217,7 @@ tooltip label {
 #battery.critical:not(.charging) {
 	background: @error;
 	color: @base;
-	border-left: 4px solid @maroon;
+	border-left: 4px solid @error-border;
 }
 
 /* -----------------------------------------------------------------------------
@@ -226,16 +235,16 @@ tooltip label {
 
 #pulseaudio {
 	background: @background-primary;
-	color: @yellow;
-	border-left: 4px solid @yellow;
-	border-radius: 0 12px 12px 0;
-	margin: 6px 2px 6px 0;
-	padding: 4px 12px;
+	color: @green;
+	border-left: 4px solid @green;
+	border-radius: 12px ;
+	margin: 6px 4px 6px 0;
+	padding: 4px 16px 4px 8px;
 }
 
 #pulseaudio.muted {
-	color: @subtext0;
-	border-left: 4px solid @subtext0;
+	color: @error;
+	border-left: 4px solid @error;
 }
 
 /* -----------------------------------------------------------------------------
@@ -246,19 +255,19 @@ tooltip label {
 	background: @background-primary;
 	color: @green;
 	border-left: 4px solid @green;
-	margin: 6px 2px;
+	margin: 6px 0px 6px 2px;
 	padding: 4px 12px;
-	border-radius: 12px;
+	border-radius: 12px 0px 0px 12px;
 }
 
 #network.disconnected {
 	color: @error;
-	border-left: 4px solid @error;
+	border-left: 4px solid @error-border;
 }
 
 #network.disabled {
-	color: @subtext0;
-	border-left: 4px solid @subtext0;
+	color: @gray;
+	border-left: 4px solid @gray;
 }
 
 /* -----------------------------------------------------------------------------
@@ -289,15 +298,15 @@ tooltip label {
 
 #custom-notification {
 	background: @background-primary;
-	color: @lavender;
-	border-left: 4px solid @lavender;
+	color: @carpyellow;
+	border-left: 4px solid @carpyellow;
 	margin: 6px 2px;
 	padding: 4px 12px;
 	border-radius: 12px;
 }
 
 #custom-power {
-	background: @blue;
+	background: @teal;
 	color: @base;
 	padding: 4px 6px 4px 10px;
 	margin: 6px 2px 6px 2px;

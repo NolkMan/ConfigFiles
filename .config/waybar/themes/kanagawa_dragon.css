@@ -3,14 +3,14 @@
 */
 
 /* Base colors */
-@define-color base   #1f1f28;
+@define-color base   #0d0c0c;
 @define-color mantle #16161d;
 @define-color crust  #0d0d14;
 
 /* Text colors */
 @define-color text     #dcd7ba;
-@define-color subtext0 #a89984;
-@define-color subtext1 #c8c093;
+@define-color subtext0 #a6a69c;
+@define-color subtext1 #e6e0c2;
 
 /* Surface colors */
 @define-color surface0 #2a2a37;
@@ -23,32 +23,49 @@
 @define-color overlay2 #8b8b8b;
 
 /* Accent colors */
-@define-color blue      #7fb4ca;
-@define-color lavender  #a4b9ef;
+@define-color blue      #8ba4b0;
+@define-color aqua      #8ea4a2;
+@define-color lavender  #8992a7;
 @define-color sapphire  #7fb4ca;
 @define-color sky       #7dc4e4;
-@define-color teal      #6a9589;
-@define-color green     #76946a;
-@define-color yellow    #dca561;
-@define-color peach     #ffa066;
+@define-color teal      #949fb5;
+@define-color green     #87a987;
+@define-color yellow    #c4b28a;
+@define-color orange    #b98d7b;
+@define-color peach     #b98d7b;
 @define-color maroon    #e46876;
-@define-color red       #e82424;
-@define-color mauve     #957fb8;
+@define-color red       #c4746e;
+@define-color mauve     #a292a3;
 @define-color pink      #d27e99;
-@define-color flamingo  #e82424;
+@define-color flamingo  #a292a3;
 @define-color rosewater #dcd7ba;
+@define-color gray #7a8382;
+@define-color black #0d0d0c;
+@define-color black1 #12120f;
+@define-color black2 #1D1C19;
+@define-color black3 #181616;
+@define-color black4 #282727;
+@define-color black5 #393836;
+@define-color black6 #625e5a;
+
+@define-color surimiorange #ffa066;
+@define-color sakurapink #D27E99;
+@define-color carpyellow #E6C384;
+@define-color dragonash #737c73;
 
 /* Additional styling variables - using solid colors instead of rgba */
-@define-color background-primary   #1f1f28;
-@define-color background-secondary #2a2a37;
-@define-color background-hover     #363646;
-@define-color border-color         #565575;
+@define-color background-primary   @black4;
+@define-color background-secondary @black5;
+@define-color background-hover     @black5;
+@define-color border-color         @black5;
 
 /* Status colors */
 @define-color success @green;
 @define-color warning @yellow;
 @define-color error   @red;
+@define-color error-border @black6;
 @define-color info    @blue;
+
 
 /* Module-specific background colors */
 @define-color bg-workspaces #2a2a37;
@@ -56,5 +73,5 @@
 @define-color bg-system     #363646;
 @define-color bg-network    #363646;
 @define-color bg-audio      #363646;
-@define-color bg-launcher   #957fb8;
+@define-color bg-launcher   #a292a3;
 @define-color bg-power      #e82424;

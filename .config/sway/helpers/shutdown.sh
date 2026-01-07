@@ -7,7 +7,7 @@ THEME_STR='window { location:north west; children: [listview,overlay]; } listvie
 
 
 if [ $1 == "menu" ]; then
-	OPTIONS="shutdown reboot logout"
+	OPTIONS="shutdown reboot logout lock"
 	SELECTION=`echo "$OPTIONS" | sed -e 's/ /\n/g' | rofi -dmenu -theme-str "$THEME_STR"`
 	echo $SELECTION
 	if [ -z $SELECTION ]; then
@@ -19,8 +19,11 @@ if [ $1 == "menu" ]; then
 	elif [ $SELECTION == "reboot" ]; then
 		reboot
 	elif [ $SELECTION == "logout" ]; then
-		logout
+		loginctl terminate-user active
+	elif [ $SELECTION == "lock" ]; then
+		swaylock -C ~/.config/sway/helpers/swaylock.config
 	fi
+
 fi
 
 if [ $1 == "lock" ]; then
