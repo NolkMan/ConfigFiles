@@ -109,7 +109,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 bindsym $mod+Control+e exec 'swaylock -C ~/.config/sway/helpers/swaylock.config'
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec '~/.config/sway/helpers/shutdown.sh menu'
 
 # Autotype
 bindsym --release $mod+Control+v exec "sleep 2 && wl-paste -n | wtype -d 10 - "

@@ -19,7 +19,7 @@ if [ $1 == "menu" ]; then
 	elif [ $SELECTION == "reboot" ]; then
 		reboot
 	elif [ $SELECTION == "logout" ]; then
-		loginctl terminate-user active
+		swaymsg exit
 	elif [ $SELECTION == "lock" ]; then
 		swaylock -C ~/.config/sway/helpers/swaylock.config
 	fi
