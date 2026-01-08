@@ -120,6 +120,7 @@
 		"format": "      {:%R\n %d.%m.%Y}",
         //"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
+		"on-click-middle": "date +%Y%m%d-%H:%M | wl-copy -n --primary",
         //"format-alt": "{:%Y-%m-%d}",
 		"calendar": {
 			"mode": "month",

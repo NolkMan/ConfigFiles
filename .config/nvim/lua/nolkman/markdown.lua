@@ -59,6 +59,7 @@ M.refresh = function()
 	vim.cmd [[ highlight default link Done ColorColumn ]]
 
 	vim.cmd [[highlight Done guibg=#ABED7D guifg=#000000]]
+	vim.cmd [[highlight Todo guibg=#79a0c9 guifg=#000000]]
 	vim.cmd [[highlight Warn guibg=#FEAF7F guifg=#000000]]
 	vim.cmd [[highlight Erro guibg=#EF6461 guifg=#000000]]
 
