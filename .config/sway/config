@@ -109,7 +109,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 bindsym $mod+Control+e exec 'swaylock -C ~/.config/sway/helpers/swaylock.config'
-bindsym $mod+Shift+e exec '~/.config/sway/helpers/shutdown.sh menu'
+bindsym $mod+Shift+e exec '~/.config/sway/helpers/shutdown.sh dialog'
 
 # Autotype
 bindsym --release $mod+Control+v exec "sleep 2 && wl-paste -n | wtype -d 10 - "
@@ -139,7 +139,6 @@ bindsym $mod+r mode "resize"
 focus_on_window_activation none
 mouse_warping none
 #no_focus [window_role="popup]
-
 
 bindsym $mod+Shift+d scratchpad show
 bindcode $mod+49 exec swaymsg 'scratchpad show, resize set height 1, resize set width 1, floating disable'

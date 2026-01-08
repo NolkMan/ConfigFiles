@@ -3,12 +3,10 @@ if [ $# -eq 0 ]; then
 	exit 1
 fi
 
-THEME_STR='window { location:north west; children: [listview,overlay]; } listview { flow: vertical; lines:1; columns: 10; padding: 2px; border: 0px; scrollbar:false;} element-text { padding: 16px 0px 16px 0px; font:"Fira Mono 16";horizontal-align: 0.5; vertical-align: 0.5;} inputbar { children: []; }'
+THEME_STR='listview { flow: vertical; lines:1; columns: 10; padding: 2px; border: 0px; scrollbar:false;} element-text { padding: 30px 0px 30px 0px; font:"Fira Mono 16";horizontal-align: 0.5; vertical-align: 0.5;} inputbar { children: []; }'
 
-
-if [ $1 == "menu" ]; then
-	OPTIONS="shutdown reboot logout lock"
-	SELECTION=`echo "$OPTIONS" | sed -e 's/ /\n/g' | rofi -dmenu -theme-str "$THEME_STR"`
+perform_action () {
+	SELECTION=$1
 	echo $SELECTION
 	if [ -z $SELECTION ]; then
 		exit
@@ -23,7 +21,21 @@ if [ $1 == "menu" ]; then
 	elif [ $SELECTION == "lock" ]; then
 		swaylock -C ~/.config/sway/helpers/swaylock.config
 	fi
+}
 
+
+if [ $1 == "menu" ]; then
+	OPTIONS="shutdown reboot logout lock"
+	THEME='window { location:north west; children: [listview,overlay]; } '$THEME_STR
+	SELECTION=`echo "$OPTIONS" | sed -e 's/ /\n/g' | rofi -dmenu -theme-str "$THEME"`
+	perform_action $SELECTION
+fi
+
+if [ $1 == "dialog" ]; then
+	OPTIONS="shutdown reboot logout lock"
+	THEME='window { location:center; children: [listview,overlay]; } '$THEME_STR
+	SELECTION=`echo "$OPTIONS" | sed -e 's/ /\n/g' | rofi -dmenu -theme-str "$THEME"`
+	perform_action $SELECTION
 fi
 
 if [ $1 == "lock" ]; then
