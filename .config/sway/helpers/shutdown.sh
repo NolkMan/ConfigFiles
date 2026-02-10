@@ -20,19 +20,22 @@ perform_action () {
 		swaymsg exit
 	elif [ $SELECTION == "lock" ]; then
 		swaylock -C ~/.config/sway/helpers/swaylock.config
+	elif [ $SELECTION == "sleep" ]; then
+		systemctl suspend
+		swaylock -C ~/.config/sway/helpers/swaylock.config
 	fi
 }
 
 
 if [ $1 == "menu" ]; then
-	OPTIONS="shutdown reboot logout lock"
+	OPTIONS="shutdown sleep reboot logout lock"
 	THEME='window { location:north west; children: [listview,overlay]; } '$THEME_STR
 	SELECTION=`echo "$OPTIONS" | sed -e 's/ /\n/g' | rofi -dmenu -theme-str "$THEME"`
 	perform_action $SELECTION
 fi
 
 if [ $1 == "dialog" ]; then
-	OPTIONS="shutdown reboot logout lock"
+	OPTIONS="shutdown sleep reboot logout lock"
 	THEME='window { location:center; children: [listview,overlay]; } '$THEME_STR
 	SELECTION=`echo "$OPTIONS" | sed -e 's/ /\n/g' | rofi -dmenu -theme-str "$THEME"`
 	perform_action $SELECTION
