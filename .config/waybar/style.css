@@ -36,6 +36,7 @@ window#waybar {
 	/*background: rgba(24, 22, 22, 0.5);*/
 	background: rgba(18, 18, 15, 0.3);
 /*	background: @black1;*/
+	/* background: white; */
   /*border-bottom: 1px solid @black4;*/
   border-bottom: 1px solid rgba(40, 39, 39, 0.3);
 }
@@ -151,7 +152,7 @@ tooltip label {
 	color: @teal;
 	border-left: 4px solid @teal;
 	border-radius: 12px 0 0 12px;
-	margin: 6px 0px 6px 0;
+	margin: 6px 0px 6px 2px;
 	padding: 4px 14px 4px 10px;
 }
 
@@ -180,7 +181,7 @@ tooltip label {
 	color: @teal;
 	border-left: 4px solid @teal;
 	border-radius: 0 12px 12px 0;
-	margin: 6px 4px 6px 0;
+	margin: 6px 2px 6px 0;
 	padding: 4px 12px 4px 10px;
 }
 
@@ -238,7 +239,7 @@ tooltip label {
 	color: @green;
 	border-left: 4px solid @green;
 	border-radius: 12px ;
-	margin: 6px 4px 6px 0;
+	margin: 6px 2px 6px 2px;
 	padding: 4px 16px 4px 8px;
 }
 
@@ -303,6 +304,20 @@ tooltip label {
 	margin: 6px 2px;
 	padding: 4px 12px;
 	border-radius: 12px;
+}
+
+#custom-mail {
+	background: @background-primary;
+	color: @carpyellow;
+	border-left: 4px solid @carpyellow;
+	margin: 6px 2px 6px 2px;
+	padding: 4px 8px 4px 12px;
+	border-radius: 12px;
+}
+
+#custom-mail.disconnected {
+	color: @error;
+	border-left: 4px solid @error-border;
 }
 
 #custom-power {

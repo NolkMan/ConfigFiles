@@ -19,6 +19,8 @@
     ],
 	*/
     "modules-right": [
+		"custom/notification",
+		"custom/mail",
         //"mpd",
 //        "idle_inhibitor",
         "pulseaudio",
@@ -32,7 +34,6 @@
         "network",
         "battery",
         //"battery#bat2",
-		"custom/notification",
         "tray",
         "clock",
     ],
@@ -244,8 +245,16 @@
 		"tooltip": true,
 		"return-type": "json",
 		"exec": "$HOME/.config/mako/mako-center.sh -wb",
-		"on-click":  "$HOME/.config/mako/mako-center.sh -show",
+		"on-click": "$HOME/.config/mako/mako-center.sh -show",
 		"on-click-right": "$HOME/.config/mako/mako-center.sh -pop",
 		//"restart-interval": 2
-	}
+	},
+	"custom/mail": {
+		"format": "{text}",
+		"tooltip": true,
+		"return-type": "json",
+		"exec": "python $HOME/.config/waybar/mail/imap_connector.py",
+		"on-click": "python $HOME/.config/waybar/mail/imap_utils.py notify-latest",
+		"on-click-middle": "python $HOME/.config/waybar/mail/imap_utils.py clear"
+	},
 }
