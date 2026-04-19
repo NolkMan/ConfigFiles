@@ -4,6 +4,7 @@ import imaplib
 import json
 import time
 import sys
+import psutil
 
 from imap_utils import make_notification, get_unread, parse_data, notify_with_email
 
@@ -50,6 +51,7 @@ def remove_mail(unread, id):
         eprint(unread)
 
 def main():
+    global last_error
     getmail = ""
     while True:
         try:
@@ -77,6 +79,7 @@ def main():
                                     unread.add(d[0])
                                     getmail = d[0]
                             make_output(unread)
+                            last_error = ""
                             break
                             # TODO get what was added and make a notification out of it
                         elif typ == 'RECENT':
@@ -104,6 +107,7 @@ def main():
                                     make_output(unread)
                         elif typ == 'OK':
                             eprint("Idler received an OK")
+                            last_error = ""
                             break
                         if updates > 3:
                             # If there were many updates, try to recover the current state
@@ -123,4 +127,7 @@ def main():
         
                 
 if __name__ == "__main__":
+    # Wait a little bit before starting to let the network connect if we detect that the pc booted recently
+    if (time.time() - psutil.boot_time())/60 < 20:
+        time.sleep(30)
     main()
