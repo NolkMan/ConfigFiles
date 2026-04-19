@@ -44,3 +44,8 @@ fi
 if [ $1 == "lock" ]; then
 	swaylock -C ~/.config/sway/helpers/swaylock.config
 fi
+
+if [ $1 == "sleep" ]; then
+	systemctl suspend
+	swaylock -C ~/.config/sway/helpers/swaylock.config
+fi
