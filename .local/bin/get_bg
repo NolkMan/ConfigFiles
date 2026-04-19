@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ps aux | grep -e sw[a]ybg | awk -F'-i' '{print $2}' | awk '{print $1}'
